@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/style.css" />
+    <title>{{title}}</title>
+  </head>
+  <body>
+    <div class="grid-bg"></div>
+    <div class="container">
+
+      <!-- LOGIN CARD -->
+      <div class="card active" id="login">
+        <h1>Welcome back</h1>
+        <p class="subtitle">Sign in to continue</p>
+
+        {{#if error}}
+          <div class="alert alert-error">{{error}}</div>
+        {{/if}}
+
+        <form action="/login" method="post">
+          <div class="field">
+            <label for="username">Username</label>
+            <input
+              type="text"
+              id="username"
+              name="username"
+              placeholder="your name"
+              value="{{username}}"
+              required
+            />
+          </div>
+          <div class="field">
+            <label for="password">Password</label>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              placeholder="••••••••"
+              required
+            />
+          </div>
+          <div class="forgot"><a href="#">Forgot password?</a></div>
+          <button type="submit">Sign In →</button>
+        </form>
+
+        <div class="divider">or</div>
+        <p class="signup">
+          No account yet?
+          <a href="#" onclick="showForm('register')">Create one</a>
+        </p>
+      </div>
+
+      <!-- REGISTER CARD -->
+      <div class="card" id="register">
+        <h1>Welcome</h1>
+        <p class="subtitle">Create an account to continue</p>
+
+        {{#if registerError}}
+          <div class="alert alert-error">{{registerError}}</div>
+        {{/if}}
+
+        <form action="/register" method="post">
+          <div class="field">
+            <label for="reg-username">Username</label>
+            <input
+              type="text"
+              id="reg-username"
+              name="username"
+              placeholder="your name"
+              required
+            />
+          </div>
+          <div class="field">
+            <label for="reg-email">Email</label>
+            <input
+              type="email"
+              id="reg-email"
+              name="email"
+              placeholder="your@mail.com"
+              required
+            />
+          </div>
+          <div class="field">
+            <label for="reg-password">Password</label>
+            <input
+              type="password"
+              id="reg-password"
+              name="password"
+              placeholder="••••••••"
+              required
+            />
+          </div>
+          <button type="submit">Create Account →</button>
+        </form>
+
+        <div class="divider">or</div>
+        <p class="signup">
+          Already have an account?
+          <a href="#" onclick="showForm('login')">Sign in</a>
+        </p>
+      </div>
+
+    </div>
+    <script src="/script.js"></script>
+  </body>
+</html>
