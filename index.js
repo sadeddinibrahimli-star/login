@@ -5,16 +5,25 @@ const hbs = require("hbs")
 
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
-app.use(express.static(path.join(__dirname, 'public'))) // 👈 this serves CSS/JS
+app.use(express.static(path.join(__dirname, 'public')))
 
 app.set("view engine", "hbs")
 app.set("views", path.join(__dirname, 'views'))
 
+// GET routes
 app.get("/", (req, res) => {
     res.render("BaseCamp")
 })
-app.get("/signup", (req, res) => {
-    res.render("signup")
+
+// POST routes
+app.post("/login", (req, res) => {
+    const { username, password } = req.body
+    res.redirect("/")
+})
+
+app.post("/register", (req, res) => {
+    const { username, email, password } = req.body
+    res.redirect("/")         // ✅ sends user back to login page
 })
 
 app.listen(3000, () => {
